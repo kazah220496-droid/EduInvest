@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduInvest.kz — Платформа инвестиций в образование</title>
+  <style>
+    body {font-family: 'Open Sans', sans-serif; margin:0; background:#f9fafc; color:#333;}
+    header {background:#003a8c; color:#fff; padding:18px 36px; display:flex; align-items:center; justify-content:space-between;}
+    header h1 {margin:0; font-size:22px; display:flex; align-items:center;}
+    header svg {width:28px; height:28px; margin-right:10px; fill:#f5c542;}
+    nav a {color:white; margin:0 10px; text-decoration:none; font-weight:500; cursor:pointer}
+    nav a:hover {text-decoration:underline;}
+    main {padding:28px; max-width:1200px; margin:auto;}
+    .section {display:none; animation: fadeIn 0.35s ease-in-out;}
+    .active {display:block;}
+    .info-layout {display:flex; align-items:center; gap:30px;}
+    .info-layout img {max-width:45%; border-radius:12px;}
+    .info-text {flex:1;}
+    .card {background:white; padding:15px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.08); margin-bottom:15px;}
+    button {background:#003a8c; color:white; border:none; padding:10px 18px; border-radius:8px; cursor:pointer; font-size:15px; transition:transform 0.15s, background 0.2s;}
+    .btn-alt {background:#f5c542; color:#003a8c}
+    button:hover {transform:translateY(-2px);}
+    footer {background:#003a8c; color:white; text-align:center; padding:20px; margin-top:36px;}
+    .market-grid {display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+    .market-column {background:#fff; padding:20px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+    .company-card, .student-card {cursor:pointer; transition:transform 0.15s; padding:12px; border-radius:10px; border:1px solid #f0f0f0; margin-bottom:10px}
+    .company-card:hover, .student-card:hover {transform:translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+    .company-page {display:none; background:white; padding:20px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.08); margin-top:20px;}
+    .analytics-grid {display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+    .chart-box {background:white; border-radius:12px; padding:18px; box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+    .hero {text-align:center; background:linear-gradient(90deg,#003a8c,#0052cc); color:white; padding:46px 18px; border-radius:12px; margin-bottom:28px;}
+    .hero h2 {font-size:30px; margin-bottom:10px;}
+    .hero p {font-size:17px; max-width:900px; margin:auto;}
+    .home-grid {display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px;}
+    .home-card {background:white; border-radius:12px; padding:16px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.05);}
+    .home-card img {max-width:78px; margin-bottom:12px;}
+    .quote-section {display:flex; align-items:center; gap:20px; margin-top:26px; background:#fff; padding:16px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.05);}
+    .quote-section img {border-radius:12px; width:160px; height:auto; object-fit:cover;}
+    .quote-text {font-style:italic; font-size:16px;}
+    @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
+    @media (max-width:900px){ .info-layout{flex-direction:column} .home-grid{grid-template-columns:1fr} .market-grid{grid-template-columns:1fr} .quote-section{flex-direction:column; text-align:center} header{padding:12px} main{padding:18px} }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      <svg viewBox="0 0 24 24"><path d="M3 4v16h18V4H3zm16 14H5V6h14v12zM7 8h10v2H7V8zm0 4h6v2H7v-2z"/></svg>
+      EduInvest.kz
+    </h1>
+    <nav>
+      <a onclick="showSection('home')">Главная</a>
+      <a onclick="showSection('investor')">Инвестору</a>
+      <a onclick="showSection('student')">Студенту</a>
+      <a onclick="showSection('market')">Рынок заявок</a>
+      <a onclick="showSection('analytics')">Личный кабинет</a>
+      <a onclick="showSection('contacts')">Контакты</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HOME -->
+    <section id="home" class="section active">
+      <div class="hero">
+        <h2>Инвестиции в будущее Казахстана</h2>
+        <p>Объединяя инвесторов, студентов и государство для развития кадрового потенциала страны.</p>
+        <div style="margin-top:18px">
+          <button onclick="showSection('investor')">Зарегистрироваться как инвестор</button>
+          <button class="btn-alt" onclick="showSection('student')" style="margin-left:10px;">Зарегистрироваться как студент</button>
+        </div>
+      </div>
+
+      <div class="home-grid">
+        <div class="home-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135679.png" alt="Инвестор">
+          <h3>Для инвесторов</h3>
+          <p>Финансируйте образование и получите подготовленных специалистов.</p>
+          <p style="margin-top:8px"><button onclick="showSection('investor')">Подробнее</button></p>
+        </div>
+        <div class="home-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" alt="Студент">
+          <h3>Для студентов</h3>
+          <p>Получите оплату обучения и гарантированную работу после выпуска.</p>
+          <p style="margin-top:8px"><button class="btn-alt" onclick="showSection('student')">Подать заявку</button></p>
+        </div>
+        <div class="home-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Государство">
+          <h3>Для государства</h3>
+          <p>Развитие человеческого капитала и повышение занятости в регионах.</p>
+          <p style="margin-top:8px"><button onclick="showSection('analytics')">Аналитика</button></p>
+        </div>
+      </div>
+
+      <div class="quote-section">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Kassym-Jomart_Tokayev_official_portrait.jpg" alt="Президент РК">
+        <div>
+          <p class="quote-text">«Инвестиции в образование — это инвестиции в устойчивое будущее Казахстана. Мы должны готовить новое поколение профессионалов для страны.»</p>
+          <p style="margin-top:8px"><strong>Касым-Жомарт Токаев, Президент Республики Казахстан</strong></p>
+        </div>
+      </div>
+
+      <div style="margin-top:28px" class="card">
+        <h3>Последние новости</h3>
+        <ul>
+          <li>Пилот по дуальной подготовке инженеров в СКО — старт.</li>
+          <li>Соглашение о сотрудничестве с фондом «ДАМУ» подписано.</li>
+          <li>Новая аналитика в личном кабинете: мониторинг по регионам.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- INVESTOR -->
+    <section id="investor" class="section">
+      <div class="info-layout">
+        <div class="info-text">
+          <h2>Цели и преимущества для инвестора</h2>
+          <ul>
+            <li>Финансирование образования студентов по нужным специальностям</li>
+            <li>Получение квалифицированных специалистов</li>
+            <li>Вклад в развитие экономики и общества</li>
+          </ul>
+          <button>Регистрация организации</button>
+        </div>
+        <img src="https://images.unsplash.com/photo-1581091012184-6c8dc6e46ee4" alt="Инвестор">
+      </div>
+    </section>
+
+    <!-- STUDENT -->
+    <section id="student" class="section">
+      <div class="info-layout">
+        <img src="https://images.unsplash.com/photo-1581090700227-6b3b00c2d3b6" alt="Студент">
+        <div class="info-text">
+          <h2>Цели и преимущества для студента</h2>
+          <ul>
+            <li>Оплата обучения заинтересованными инвесторами</li>
+            <li>Возможность выбора будущей работы</li>
+            <li>Получение опыта и карьерного старта</li>
+          </ul>
+          <button>Регистрация студента</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARKET -->
+    <section id="market" class="section">
+      <div class="market-grid">
+        <div class="market-column" id="companies-column">
+          <h3>Предложения организаций</h3>
+          <div class="company-card" onclick="openCompany('Alatau Energy')">ТОО Alatau Energy, Алматы, <ul><li>Электромеханик</li><li>Энергетик</li></ul></div>
+          <div class="company-card" onclick="openCompany('QazIndustry')">АО QazIndustry, Астана, <ul><li>IT-специалист</li><li>Инженер по данным</li></ul></div>
+          <div class="company-card" onclick="openCompany('KazBuild Group')">ТОО KazBuild Group, Шымкент, <ul><li>Архитектор</li><li>Проектировщик</li></ul></div>
+        </div>
+        <div class="market-column" id="students-column">
+          <h3>Предложения студентов</h3>
+          <div class="student-card">Иванов И.И., КазНУ, Инженерия, 3 курс</div>
+          <div class="student-card">Петрова А.А., КИМЭП, IT, 2 курс</div>
+          <div class="student-card">Сидоров К.К., Евразийский, Экономика, 4 курс</div>
+        </div>
+      </div>
+      <div id="company-page" class="company-page"></div>
+    </section>
+
+    <!-- ANALYTICS -->
+    <section id="analytics" class="section">
+      <div class="analytics-grid">
+        <div class="chart-box">График по востребованным специальностям</div>
+        <div class="chart-box">Аналитика по регионам</div>
+      </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section id="contacts" class="section">
+      <div class="card">
+        <h3>Контакты</h3>
+        <p>Email: info@eduinvest.kz</p>
+        <p>Телефон: +7 700 123 4567</p>
+        <p>Адрес: г. Нур-Султан, пр. Республика, 10</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 EduInvest.kz — Платформа инвестиций в образование Казахстана
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      const el = document.getElementById(id);
+      if(el) el.classList.add('active');
+      if(id !== 'market') { const cp = document.getElementById('company-page'); if(cp) cp.style.display='none'; }
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function openCompany(name) {
+      const companyPage = document.getElementById('company-page');
+      let content = '';
+      if (name === 'Alatau Energy') {
+        content = `<h3>ТОО Alatau Energy</h3><img src='https://images.unsplash.com/photo-1607962837355-9b5e3b2b6d93' alt='Alatau Energy' style='max-width:100%;border-radius:8px;margin:12px 0;'><p><strong>Город:</strong> Алматы</p><p>Компания занимается энергетикой и поставками электрооборудования. Описание: проектирование и обслуживание сетей, производство и поставка комплектующих.</p><p><strong>Требуемые специальности:</strong></p><ul><li>Электромеханик</li><li>Энергетик</li></ul><p><strong>Условия и средняя зарплата:</strong> от 350 000 тг в зависимости от должности и опыта.</p>`;
+      } else if (name === 'QazIndustry') {
+        content = `<h3>АО QazIndustry</h3><img src='https://images.unsplash.com/photo-1555949963-aa79dcee981d' alt='QazIndustry' style='max-width:100%;border-radius:8px;margin:12px 0;'><p><strong>Город:</strong> Астана</p><p>Государственная организация, развивающая инновационные производства и цифровую трансформацию. Описание: внедрение промышленных IT-решений, аналитика данных, автоматизация процессов.</p><p><strong>Требуемые специальности:</strong></p><ul><li>IT-специалист</li><li>Инженер по данным</li></ul><p><strong>Условия и средняя зарплата:</strong> от 500 000 тг.</p>`;
+      } else if (name === 'KazBuild Group') {
+        content = `<h3>ТОО KazBuild Group</h3><img src='https://images.unsplash.com/photo-1503387762-592deb58ef4e' alt='KazBuild' style='max-width:100%;border-radius:8px;margin:12px 0;'><p><strong>Город:</strong> Шымкент</p><p>Строительная компания, специализирующаяся на архитектуре и проектировании жилых комплексов. Описание: полный цикл — проектирование, строительство, сдача объектов "под ключ".</p><p><strong>Требуемые специальности:</strong></p><ul><li>Архитектор</li><li>Проектировщик</li></ul><p><strong>Условия и средняя зарплата:</strong> от 400 000 тг.</p>`;
+      }
+      companyPage.innerHTML = content;
+      companyPage.style.display = 'block';
+      showSection('market');
+      setTimeout(()=> companyPage.scrollIntoView({behavior:'smooth', block:'start'}),100);
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){ showSection('home'); });
+  </script>
+</body>
+</html>
